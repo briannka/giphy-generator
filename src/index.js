@@ -1,5 +1,5 @@
 
-
+// Fetch random word
 // let rapidAPI = async() => {
 //     fetch("https://random-words2.p.rapidapi.com/words?limit=10&lang=en", {
 // 	"method": "GET",
