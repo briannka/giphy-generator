@@ -66,6 +66,7 @@ let bttn = document.getElementsByClassName("generate-bttn");
 
 //Handle button submission
 bttn[0].addEventListener("click", function(e) {
-    console.log('I\'m in here');
-    newGiphy('pepper');
+    let words = ["scooby doo", "singing", "cash", "spongebob", "flowers", "sad", "coding", "nerd"];
+    let word = words[Math.floor(Math.random() * words.length)];
+    newGiphy(word);
 })
