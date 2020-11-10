@@ -44,6 +44,9 @@
 //Send request to Giphy for getting gif relevant to randomly generated word.
 let newGiphy = async(word) => {
     let newWord = word;
+    let wordDOMLocation = document.getElementById("generated-word");
+    wordDOMLocation.innerHTML = `${newWord}`;
+    wordDOMLocation.style.padding = "10px";
 await fetch(`https://api.giphy.com/v1/gifs/search?api_key=KvzymYhJun6fPQXLkBeGrEPInVZLXTLj&q=${newWord}&limit=25&offset=0&rating=g&lang=en`)
 .then(res => {
     let response = res.json();
