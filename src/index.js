@@ -65,7 +65,7 @@ await fetch(`https://api.giphy.com/v1/gifs/search?api_key=KvzymYhJun6fPQXLkBeGrE
 
 
 //Identify submitted button
-let bttn = document.getElementsByClassName("generate-bttn");
+let bttn = document.getElementsByClassName("generate-word-bttn");
 
 //Handle button submission
 bttn[0].addEventListener("click", function(e) {

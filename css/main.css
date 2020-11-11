@@ -1,0 +1,67 @@
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: salmon;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+}
+
+#word {
+    margin: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: brown;
+    margin-top: 10px;
+}
+
+.generate-word-bttn {
+    border-radius: 5px;
+    padding: 15px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border: 2px solid peachpuff;
+    color: white;
+    background-color: peachpuff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.generate-word-bttn:hover {
+    background-color: darksalmon;
+    border: 2px solid darksalmon;
+}
+
+#gif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    padding-top: 30px;
+}
+
+.sub-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    width: 500px;
+} 
+
+#generated-word {
+    content: "Word: ";
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0 auto;
+    background-color: lightcoral;
+    color: white;
+}
