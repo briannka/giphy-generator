@@ -1,56 +1,28 @@
 
 // Fetch random word
-// let rapidAPI = async() => {
-//     fetch("https://random-words2.p.rapidapi.com/words?limit=10&lang=en", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "451da810a6mshce8d85146360170p1d234fjsn0caad8efea7d",
-// 		"x-rapidapi-host": "random-words2.p.rapidapi.com"
-// 	}
-// })
-//     .then(res => {
-//         res.json();
-//         debugger;
-//     })
-//     .then(result => {
-//         let targetWord = result.word;
-//         console.log(targetWord);
-//         console.log('This is the rapidAPI function');
-//         let wordDOMLocation = document.getElementById("generated-word");
-//         wordDOMLocation.innerHTML = `${targetWord}`;
-//         giphyCall(targetWord);
-//     })
-//     .catch(err => console.error('Couldn\'t complete request', err));
-//     // let randomWord = await(apiCall.word);
-    // console.log(randomWord);
-    
-// }
+let wordnikAPI = async() => {
+    await fetch("https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=0ku91yyx2eh3914j7aitbvwnuj9x46ngp8p5ostu3kc0057hp")
+    .then(async (res) => await res.json())
+    .then((result) => {
+        let targetWord = result.word;
+        newGiphy(targetWord);
+    })
+    .catch((err) => {
+        alert(`Couldn't complete due to ${err}`);
+    })
+}
 
-// let giphyCall = async ({ id, word }) => {
-//     //calls giphy once word is generated from wordnik
-//     //calls with word from wordnik api 
-//     let returnedWord = word;
-//     let apiCall = fetch(`https://api.giphy.com/v1/gifs/search?api_key=KvzymYhJun6fPQXLkBeGrEPInVZLXTLj&q=${returnedWord}&limit=25&offset=0&rating=g&lang=en`);
-//     let fetchedGif = await(apiCall);
-//     fetchedGif
-//     .then((response) => {
-//         let result = response.json();
-//         console.log(result)
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })
-// }
+
 //Send request to Giphy for getting gif relevant to randomly generated word.
 let newGiphy = async(word) => {
     let newWord = word;
+    console.log(newWord);
     let wordDOMLocation = document.getElementById("generated-word");
     wordDOMLocation.innerHTML = `${newWord}`;
     wordDOMLocation.style.padding = "10px";
 await fetch(`https://api.giphy.com/v1/gifs/search?api_key=KvzymYhJun6fPQXLkBeGrEPInVZLXTLj&q=${newWord}&limit=25&offset=0&rating=g&lang=en`)
 .then(res => {
-    let response = res.json();
-    return response;
+    return res.json();
 })
 .then(result => {
     let data = result.data;
@@ -59,7 +31,7 @@ await fetch(`https://api.giphy.com/v1/gifs/search?api_key=KvzymYhJun6fPQXLkBeGrE
     gifLocationInDOM.src = firstGif;
 })
 .catch(err => 
-    console.log('Couldnt complete request because of error: ', err));
+    console.log('Perhaps there is no word for that one... here is the error:', err));
 };
 
 
@@ -69,7 +41,5 @@ let bttn = document.getElementsByClassName("generate-word-bttn");
 
 //Handle button submission
 bttn[0].addEventListener("click", function(e) {
-    let words = ["scooby doo", "singing", "cash", "spongebob", "flowers", "sad", "coding", "nerd"];
-    let word = words[Math.floor(Math.random() * words.length)];
-    newGiphy(word);
+    wordnikAPI();
 })
